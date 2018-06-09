@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/showDescription" android:textSize="24sp"
+                android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+                android:layout_marginTop="19dp" android:layout_toStartOf="@+id/showDate"/>
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/showAmount" android:textSize="18sp"
+                android:layout_alignBottom="@+id/showDescription" android:layout_alignParentStart="true"
+                android:layout_marginStart="282dp"/>
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/showDate"
+                android:layout_alignBaseline="@+id/showCategory" android:layout_alignBottom="@+id/showCategory"
+                android:layout_alignStart="@+id/showAmount"/>
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/showCategory"
+                android:layout_below="@+id/showDescription" android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/showDate"/>
+    </RelativeLayout>
+</LinearLayout>

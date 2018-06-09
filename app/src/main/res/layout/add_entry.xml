@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:padding="20sp" android:layout_alignParentBottom="false"
+              android:background="@android:color/background_light">
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/descriptionField" android:hint="description" android:singleLine="false"
+            android:textSize="24sp"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/amountField" android:hint="amount"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/dateField" android:hint="date"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/categoryField" android:hint="category"/>
+    <Button
+            android:text="Add Entry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/confirmEntryButton"
+            android:backgroundTint="@color/colorAccent"/>
+</LinearLayout>
