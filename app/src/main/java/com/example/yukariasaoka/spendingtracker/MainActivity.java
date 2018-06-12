@@ -13,16 +13,19 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // TODO
-    // sort by date (most recent, least recent)
-    // category view
-    // calendar add (using the date picker)
     // icons for entry item
+
+    // sort by date (most recent, least recent)
+
+    // category view
     // enumerate categories?
 
-    Button addEntryButton;
-    ListView entryListView;
-    ArrayList<Entry> entries;
-    ListAdapter eAdapter;
+    // only dollar values for amount?
+
+    private Button addEntryButton;
+    private ListView entryListView;
+    private ArrayList<Entry> entries;
+    private ListAdapter eAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

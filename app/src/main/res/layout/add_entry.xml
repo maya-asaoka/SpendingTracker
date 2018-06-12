@@ -18,12 +18,10 @@
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/amountField" android:hint="amount"/>
-    <EditText
+    <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:ems="10"
-            android:id="@+id/dateField" android:hint="date"/>
+            android:layout_height="wrap_content" android:id="@+id/chooseDate" android:hint="choose date"
+            android:textSize="18sp" android:paddingTop="10sp" android:paddingBottom="10sp" android:paddingLeft="3sp"/>
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
