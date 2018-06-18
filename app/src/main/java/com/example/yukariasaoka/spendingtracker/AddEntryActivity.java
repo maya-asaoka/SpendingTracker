@@ -5,18 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.*;
 
 import java.util.Calendar;
 
-public class AddEntryActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddEntryActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private Button confirmButton;
     private TextView date;
     private DatePickerDialog.OnDateSetListener onDateSetListener;
+    private Spinner categorySpinner;
+    private ArrayAdapter<String> adapter;
+    private TextView spinnerText;
+
+    // TODO: add spinner
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,11 @@ public class AddEntryActivity extends AppCompatActivity implements View.OnClickL
 
         confirmButton = findViewById(R.id.confirmEntryButton);
         confirmButton.setOnClickListener(this);
+
+        categorySpinner = findViewById(R.id.categorySpinner);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, MainActivity.getInstance().getCategories());
+        categorySpinner.setAdapter(adapter);
+        categorySpinner.setOnItemSelectedListener(this);
 
         // setting onClickListener for choose date textview
         date = findViewById(R.id.chooseDate);
@@ -71,8 +78,10 @@ public class AddEntryActivity extends AppCompatActivity implements View.OnClickL
         EditText amount = findViewById(R.id.amountField);
         String amountString = amount.getText().toString();
 
-        EditText category = findViewById(R.id.categoryField);
-        String categoryString = category.getText().toString();
+        String categoryString = spinnerText.getText().toString();
+        if (categoryString == " Choose Category"){
+            categoryString = "Other";
+        }
 
         switch (v.getId()) {
 
@@ -104,4 +113,13 @@ public class AddEntryActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        spinnerText = (TextView) view;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        spinnerText = null;
+    }
 }

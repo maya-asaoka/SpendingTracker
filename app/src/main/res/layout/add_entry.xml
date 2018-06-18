@@ -22,12 +22,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/chooseDate" android:hint="choose date"
             android:textSize="18sp" android:paddingTop="10sp" android:paddingBottom="10sp" android:paddingLeft="3sp"/>
-    <EditText
+    <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/categoryField" android:hint="category"/>
+            android:layout_height="wrap_content" android:id="@+id/categorySpinner" android:spinnerMode="dialog"
+    />
     <Button
             android:text="Add Entry"
             android:layout_width="match_parent"
