@@ -9,7 +9,8 @@ import android.widget.*;
 
 import java.util.Calendar;
 
-public class AddEntryActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class AddEntryActivity extends AppCompatActivity implements View.OnClickListener,
+        AdapterView.OnItemSelectedListener {
 
     private Button confirmButton;
     private TextView date;
@@ -17,8 +18,6 @@ public class AddEntryActivity extends AppCompatActivity implements View.OnClickL
     private Spinner categorySpinner;
     private ArrayAdapter<String> adapter;
     private TextView spinnerText;
-
-    // TODO: add spinner
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,8 @@ public class AddEntryActivity extends AppCompatActivity implements View.OnClickL
         confirmButton.setOnClickListener(this);
 
         categorySpinner = findViewById(R.id.categorySpinner);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, MainActivity.getInstance().getCategories());
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+                MainActivity.getInstance().getCategories());
         categorySpinner.setAdapter(adapter);
         categorySpinner.setOnItemSelectedListener(this);
 
@@ -69,6 +69,7 @@ public class AddEntryActivity extends AppCompatActivity implements View.OnClickL
 
     // EFFECTS: if confirmEntryButton pressed, creates new Entry object from EditTexts
     //          and sends it to MainActivity to display
+    // if category is null, default to "Other"
     @Override
     public void onClick(View v) {
 
@@ -79,7 +80,7 @@ public class AddEntryActivity extends AppCompatActivity implements View.OnClickL
         String amountString = amount.getText().toString();
 
         String categoryString = spinnerText.getText().toString();
-        if (categoryString == " Choose Category"){
+        if (categoryString == " Choose Category") {
             categoryString = "Other";
         }
 

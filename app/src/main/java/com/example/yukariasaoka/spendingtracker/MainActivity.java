@@ -13,18 +13,11 @@ import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // choose category spinner in addEntry
+    // show total!!
 
-    // icons for entry item
+    // addentry get rid of spinner
 
-    // preferences page---
-    // sort by date (most recent, least recent)
-    // choose category spinner
-    // category view (for each category, different list, same layout)
-    // edit categories page (add/remove) later
-    // month by month view (later)
-
-    // only dollar values for amount?
+    // edit entries
 
     private Button addEntryButton;
     private Button settingsButton;
@@ -41,18 +34,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         instance = this;
 
         addEntryButton = findViewById(R.id.addEntryButton);
-        addEntryButton.setOnClickListener(this);
-
         settingsButton = findViewById(R.id.settingsButton);
+
+        addEntryButton.setOnClickListener(this);
         settingsButton.setOnClickListener(this);
 
         entries = new ArrayList<>();
         categories = new ArrayList<>();
+        addDefaultCategories();
 
         // for demo (see method for details)
         addExampleEntries();
-
-        addDefaultCategories();
 
         entryListView = (ListView) findViewById(R.id.entriesList);
 
@@ -67,23 +59,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
 
-            case R.id.addEntryButton:
-
+            case R.id.addEntryButton: {
                 Intent in = new Intent(getApplicationContext(), AddEntryActivity.class);
                 startActivityForResult(in, 111);
-
                 break;
+            }
 
             case R.id.settingsButton:
-
-                // TODO
-
+                Intent in2 = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(in2);
                 break;
 
             default:
-
                 break;
-
         }
     }
 
@@ -100,21 +88,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             entryListView.setAdapter(eAdapter);
 
         }
-
-        if (requestCode == 222 && resultCode == RESULT_OK) {
-
-            String sort = data.getStringExtra("sort by");
-
-            if (sort == "Date (most recent)") {
-                sortByMostRecent();
-            }
-            if (sort == "Date (least recent)") {
-                sortByLeastRecent();
-            }
-        }
     }
 
-    private void addDefaultCategories(){
+    private void addDefaultCategories() {
         categories.add(" Choose Category");
         categories.add("Food");
         categories.add("Entertainment");
@@ -126,12 +102,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         categories.add("Gifts");
         categories.add("Pets");
         categories.add("Other");
-        sortCategories();
+        sortAlphabetically();
     }
 
     // MODIFIES: this
     // EFFECTS: adds example list of entries for demo
-    private void addExampleEntries(){
+    private void addExampleEntries() {
         entries.add(new Entry("Starbucks", "6.00", "02/06/18", "Food"));
         entries.add(new Entry("Sushi", "10.00", "20/05/18", "Food"));
         entries.add(new Entry("Concert Tickets", "50.00", "07/06/18", "Entertainment"));
@@ -141,15 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         entries.add(new Entry("iTunes Purchase", "9.99", "11/06/18", "Music"));
     }
 
-    private void sortByMostRecent(){
-        // TODO
-    }
-
-    private void sortByLeastRecent(){
-        // TODO
-    }
-
-    public static MainActivity getInstance(){
+    public static MainActivity getInstance() {
         return instance;
     }
 
@@ -157,15 +125,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return categories;
     }
 
-    public void addCategory(String c){
+    public void addCategory(String c) {
         categories.add(c);
     }
 
-    public void removeCategory(String c){
+    public void removeCategory(String c) {
         categories.remove(c);
     }
 
-    public void sortCategories(){
+
+    // sorting methods for categories
+
+    public void sortAlphabetically() {
         Collections.sort(categories, String.CASE_INSENSITIVE_ORDER);
+    }
+
+    public void sortByMostRecent() {
+        // TODO
+    }
+
+    public void sortByLeastRecent() {
+        // TODO
+    }
+
+    public void viewByCategory(String cat) {
+        // TODO
+    }
+
+    public void sortByMonth(String month) {
+        // TODO
     }
 }
