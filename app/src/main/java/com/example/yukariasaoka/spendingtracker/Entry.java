@@ -3,13 +3,14 @@ package com.example.yukariasaoka.spendingtracker;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Entry implements Parcelable {
+public class Entry implements Parcelable, Comparable<Entry> {
 
     private String description;
     private String amount;
     private String date;
     private String category;
 
+    // date in dd/mm/yy
     public Entry(String description, String amount, String date, String category) {
         this.description = description;
         this.amount = amount;
@@ -69,5 +70,10 @@ public class Entry implements Parcelable {
         dest.writeString(amount);
         dest.writeString(date);
         dest.writeString(category);
+    }
+
+    @Override
+    public int compareTo(Entry o) {
+        return description.compareTo(o.getDescription());
     }
 }
