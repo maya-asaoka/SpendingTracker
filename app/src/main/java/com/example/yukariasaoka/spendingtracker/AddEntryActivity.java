@@ -9,15 +9,13 @@ import android.widget.*;
 
 import java.util.Calendar;
 
-public class AddEntryActivity extends AppCompatActivity implements View.OnClickListener,
-        AdapterView.OnItemSelectedListener {
+public class AddEntryActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button confirmButton;
     private TextView date;
+    private TextView category;
     private DatePickerDialog.OnDateSetListener onDateSetListener;
-    private Spinner categorySpinner;
-    private ArrayAdapter<String> adapter;
-    private TextView spinnerText;
+    private String categoryString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +24,8 @@ public class AddEntryActivity extends AppCompatActivity implements View.OnClickL
 
         confirmButton = findViewById(R.id.confirmEntryButton);
         confirmButton.setOnClickListener(this);
-
-        categorySpinner = findViewById(R.id.categorySpinner);
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
-                MainActivity.getInstance().getCategories());
-        categorySpinner.setAdapter(adapter);
-        categorySpinner.setOnItemSelectedListener(this);
+        category = findViewById(R.id.chooseCategory);
+        category.setOnClickListener(this);
 
         // setting onClickListener for choose date textview
         date = findViewById(R.id.chooseDate);
@@ -79,21 +73,25 @@ public class AddEntryActivity extends AppCompatActivity implements View.OnClickL
         EditText amount = findViewById(R.id.amountField);
         String amountString = amount.getText().toString();
 
-        String categoryString = spinnerText.getText().toString();
-        if (categoryString == " Choose Category") {
-            categoryString = "Other";
-        }
+        if (categoryString == null) { categoryString = "Other"; }
 
         switch (v.getId()) {
+
+            case R.id.chooseCategory:
+
+                Intent catAct = new Intent(this, CategoryActivity.class);
+                startActivityForResult(catAct, 222);
+                break;
 
             case R.id.confirmEntryButton:
 
                 Entry entry = new Entry(descString, amountString, date.getText().toString(), categoryString);
-                Intent in = new Intent(getApplicationContext(), MainActivity.class);
-                in.putExtra("newEntry", entry);
 
-                setResult(RESULT_OK, in);
+                Intent main = new Intent(this, MainActivity.class);
+                main.putExtra("newEntry", entry);
+                setResult(RESULT_OK, main);
                 finish();
+                break;
 
             default:
 
@@ -103,24 +101,21 @@ public class AddEntryActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 222 && resultCode == RESULT_OK) {
+            String cat = data.getStringExtra("Category");
+            category.setText(cat);
+            categoryString = cat;
+        }
+    }
+
     // EFFECTS: does not add entry to list if back button is pressed
     @Override
     public void onBackPressed() {
-
-        Intent i = new Intent();
-        setResult(RESULT_CANCELED, i);
+        Intent returnToMain = new Intent();
+        setResult(RESULT_CANCELED, returnToMain);
         finish();
-
     }
 
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        spinnerText = (TextView) view;
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        spinnerText = null;
-    }
 }

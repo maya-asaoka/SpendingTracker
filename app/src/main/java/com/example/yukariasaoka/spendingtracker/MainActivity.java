@@ -53,20 +53,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     @Override
     public void onClick(View v) {
 
         switch (v.getId()) {
 
             case R.id.addEntryButton: {
-                Intent in = new Intent(getApplicationContext(), AddEntryActivity.class);
+                Intent in = new Intent(this, AddEntryActivity.class);
                 startActivityForResult(in, 111);
                 break;
             }
 
             case R.id.settingsButton:
-                Intent in2 = new Intent(getApplicationContext(), SettingsActivity.class);
+                Intent in2 = new Intent(this, SettingsActivity.class);
                 startActivity(in2);
                 break;
 
@@ -90,37 +89,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void addDefaultCategories() {
-        categories.add(" Choose Category");
-        categories.add("Food");
-        categories.add("Entertainment");
-        categories.add("Clothing");
-        categories.add("Music");
-        categories.add("Books");
-        categories.add("Travel");
-        categories.add("Transport");
-        categories.add("Gifts");
-        categories.add("Pets");
-        categories.add("Other");
-        sortCategories();
-    }
-
-    // MODIFIES: this
-    // EFFECTS: adds example list of entries for demo
-    private void addExampleEntries() {
-        entries.add(new Entry("Music", "9.99", "11/06/18", "Music"));
-        entries.add(new Entry("Concert Tickets", "50.00", "07/06/18", "Entertainment"));
-        entries.add(new Entry("Starbucks", "6.00", "02/06/18", "Food"));
-        entries.add(new Entry("Movie Tickets", "11.00", "31/05/18", "Entertainment"));
-        entries.add(new Entry("Sushi", "10.00", "20/05/18", "Food"));
-        entries.add(new Entry("New Sandals", "89.00", "13/05/18", "Clothing"));
-        entries.add(new Entry("New Shirt", "45.00", "13/05/18", "Clothing"));
-    }
-
     public static MainActivity getInstance() {
         return instance;
     }
 
+
+    // manage categories
     public ArrayList<String> getCategories() {
         return categories;
     }
@@ -136,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void sortCategories() {
         Collections.sort(categories, String.CASE_INSENSITIVE_ORDER);
     }
+
 
     // sorting methods for entries
 
@@ -161,5 +136,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void sortByMonth(String month) {
         // TODO
+    }
+
+    private void addDefaultCategories() {
+        categories.add("Food");
+        categories.add("Entertainment");
+        categories.add("Clothing");
+        categories.add("Music");
+        categories.add("Books");
+        categories.add("Travel");
+        categories.add("Transport");
+        categories.add("Gifts");
+        categories.add("Pets");
+        categories.add("Other");
+        sortCategories();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: adds example list of entries for demo
+    private void addExampleEntries() {
+        entries.add(new Entry("Music", "9.99", "11/06/18", "Music"));
+        entries.add(new Entry("Concert Tickets", "50.00", "07/06/18", "Entertainment"));
+        entries.add(new Entry("Starbucks", "6.00", "02/06/18", "Food"));
+        entries.add(new Entry("Movie Tickets", "11.00", "31/05/18", "Entertainment"));
+        entries.add(new Entry("Sushi", "10.00", "20/05/18", "Food"));
+        entries.add(new Entry("New Sandals", "89.00", "13/05/18", "Clothing"));
+        entries.add(new Entry("New Shirt", "45.00", "13/05/18", "Clothing"));
     }
 }

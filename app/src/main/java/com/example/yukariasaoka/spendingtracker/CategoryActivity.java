@@ -20,13 +20,20 @@ public class CategoryActivity extends ListActivity {
         setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, cat));
     }
 
-    // EFFECTS: sends chosen category back to settings activity
+    // EFFECTS: sends chosen category back to previous activity
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Intent i = getIntent();
         String category = (String) getListAdapter().getItem(position);
         i.putExtra("Category", category);
         setResult(RESULT_OK, i);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent();
+        setResult(RESULT_CANCELED, i);
         finish();
     }
 }
