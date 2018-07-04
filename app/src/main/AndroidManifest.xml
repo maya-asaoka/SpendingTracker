@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".CategoryActivity">
         </activity>
-        <activity android:name=".MonthActivity">
+        <activity android:name=".AddCategoryActivity">
         </activity>
     </application>
 

@@ -18,6 +18,7 @@ public class Entry implements Parcelable, Comparable<Entry> {
         this.category = category;
     }
 
+    // makes entry parceable so it can be sent as intent extra
     protected Entry(Parcel in) {
         description = in.readString();
         amount = in.readString();
@@ -72,6 +73,7 @@ public class Entry implements Parcelable, Comparable<Entry> {
         dest.writeString(category);
     }
 
+    // so collections.sort will sort by the description field
     @Override
     public int compareTo(Entry o) {
         return description.compareTo(o.getDescription());

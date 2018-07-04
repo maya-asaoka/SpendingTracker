@@ -101,6 +101,7 @@ public class AddEntryActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    // adds entry to list in main when confirmEntryButton is pressed, changes textview to chosen category
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 222 && resultCode == RESULT_OK) {

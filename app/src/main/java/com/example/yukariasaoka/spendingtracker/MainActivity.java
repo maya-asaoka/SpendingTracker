@@ -14,8 +14,6 @@ import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // comment code better
-
     // edit entries
 
     private Button addEntryButton;
@@ -95,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return instance;
     }
 
+    // calculates the total amount from all the entries
     private double calculateTotal() {
         double total = 0;
         for (Entry e : entries) {
@@ -110,12 +109,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void addCategory(String c) {
         categories.add(c);
+        sortCategories();
     }
 
     public void removeCategory(String c) {
         categories.remove(c);
     }
 
+    // sorts categories in alphabetical order
     private void sortCategories() {
         Collections.sort(categories, String.CASE_INSENSITIVE_ORDER);
     }

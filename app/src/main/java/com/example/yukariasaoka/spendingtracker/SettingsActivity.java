@@ -11,7 +11,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     private TextView alpha;
     private TextView mostRecent;
     private TextView leastRecent;
-    private TextView editCategories;
+    private TextView addCategory;
+    private TextView removeCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +22,14 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         alpha = findViewById(R.id.alpha);
         mostRecent = findViewById(R.id.mostRecent);
         leastRecent = findViewById(R.id.leastRecent);
-        editCategories = findViewById(R.id.editCategories);
+        addCategory = findViewById(R.id.addCategory);
+        removeCategory = findViewById(R.id.removeCategory);
 
         alpha.setOnClickListener(this);
         mostRecent.setOnClickListener(this);
         leastRecent.setOnClickListener(this);
-        editCategories.setOnClickListener(this);
+        addCategory.setOnClickListener(this);
+        removeCategory.setOnClickListener(this);
     }
 
     @Override
@@ -52,9 +55,15 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
             }
 
-            case R.id.editCategories: {
-                // go to category list: dialog box for add/delete
-                finish();
+            case R.id.addCategory: {
+                Intent i0 = new Intent(this, AddCategoryActivity.class);
+                startActivityForResult(i0, 0);
+                break;
+            }
+
+            case R.id.removeCategory: {
+                Intent i1 = new Intent(this, CategoryActivity.class);
+                startActivityForResult(i1, 1);
                 break;
             }
 
@@ -66,5 +75,14 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        if (resultCode == RESULT_OK && requestCode == 0) {
+            MainActivity.getInstance().addCategory(data.getStringExtra("new category"));
+            finish();
+        }
+
+        if (resultCode == RESULT_OK && requestCode == 1) {
+            MainActivity.getInstance().removeCategory(data.getStringExtra("Category"));
+            finish();
+        }
     }
 }

@@ -4,7 +4,10 @@
     <string name="most_recent">Sort By (most recent, default)</string>
     <string name="least_recent">Sort By (least recent)</string>
     <string name="alpha">Sort Alphabetically</string>
-    <string name="add_remove">Add/Remove Categories</string>
+    <string name="add">Add Category</string>
+    <string name="remove">Remove Cateogry</string>
+    <string name="enter_cat_name">enter category name</string>
 
     <string name="confirm">confirm</string>
+    <string name="add_cat">add category</string>
 </resources>
