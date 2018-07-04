@@ -3,6 +3,8 @@ package com.example.yukariasaoka.spendingtracker;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Objects;
+
 public class Entry implements Parcelable, Comparable<Entry> {
 
     private String description;
@@ -77,5 +79,22 @@ public class Entry implements Parcelable, Comparable<Entry> {
     @Override
     public int compareTo(Entry o) {
         return description.compareTo(o.getDescription());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Entry entry = (Entry) o;
+        return Objects.equals(getDescription(), entry.getDescription()) &&
+                Objects.equals(getAmount(), entry.getAmount()) &&
+                Objects.equals(getDate(), entry.getDate()) &&
+                Objects.equals(getCategory(), entry.getCategory());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getDescription(), getAmount(), getDate(), getCategory());
     }
 }

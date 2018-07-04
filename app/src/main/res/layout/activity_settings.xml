@@ -41,10 +41,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/removeCategory" android:textSize="24sp"
                 android:padding="15sp"/>
-        <Button
-                android:text="@string/confirm"
+        <TextView
+                android:text="@string/remove_entry"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/confirmButton"
-                android:backgroundTint="@color/colorAccent"/>
+                android:layout_height="wrap_content" android:id="@+id/removeEntry" android:textSize="24sp"
+                android:padding="15sp"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

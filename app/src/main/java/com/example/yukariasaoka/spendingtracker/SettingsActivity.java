@@ -13,6 +13,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     private TextView leastRecent;
     private TextView addCategory;
     private TextView removeCategory;
+    private TextView removeEntry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +25,14 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         leastRecent = findViewById(R.id.leastRecent);
         addCategory = findViewById(R.id.addCategory);
         removeCategory = findViewById(R.id.removeCategory);
+        removeEntry = findViewById(R.id.removeEntry);
 
         alpha.setOnClickListener(this);
         mostRecent.setOnClickListener(this);
         leastRecent.setOnClickListener(this);
         addCategory.setOnClickListener(this);
         removeCategory.setOnClickListener(this);
+        removeEntry.setOnClickListener(this);
     }
 
     @Override
@@ -67,6 +70,12 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
             }
 
+            case R.id.removeEntry: {
+                Intent i2 = new Intent(this, RemoveEntryActivity.class);
+                startActivityForResult(i2, 2);
+                break;
+            }
+
             default:
                 break;
         }
@@ -82,6 +91,12 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         if (resultCode == RESULT_OK && requestCode == 1) {
             MainActivity.getInstance().removeCategory(data.getStringExtra("Category"));
+            finish();
+        }
+
+        if (resultCode == RESULT_OK && requestCode == 2) {
+            Entry e = data.getParcelableExtra("Entry");
+            MainActivity.getInstance().removeEntry(e);
             finish();
         }
     }

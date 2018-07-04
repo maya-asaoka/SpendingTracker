@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".AddCategoryActivity">
         </activity>
+        <activity android:name=".RemoveEntryActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -14,8 +14,6 @@ import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // edit entries
-
     private Button addEntryButton;
     private Button settingsButton;
     private TextView totalView;
@@ -89,9 +87,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public static MainActivity getInstance() {
-        return instance;
+
+    // getters
+    public static MainActivity getInstance() { return instance; }
+    public ArrayList<Entry> getEntries() { return entries; }
+
+    public void removeEntry(Entry e) {
+        entries.remove(e);
+        entryListView.setAdapter(eAdapter);
     }
+
+
 
     // calculates the total amount from all the entries
     private double calculateTotal() {
@@ -101,6 +107,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return total;
     }
+
+
+
+
 
     // manage categories
     public ArrayList<String> getCategories() {
@@ -120,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void sortCategories() {
         Collections.sort(categories, String.CASE_INSENSITIVE_ORDER);
     }
+
 
 
 

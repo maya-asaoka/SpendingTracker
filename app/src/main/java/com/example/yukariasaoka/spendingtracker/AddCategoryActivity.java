@@ -28,7 +28,7 @@ public class AddCategoryActivity extends AppCompatActivity implements View.OnCli
 
         switch(v.getId()) {
 
-            case (R.id.addCategoryButton): {
+            case R.id.addCategoryButton: {
                 Intent in = getIntent();
                 String cat = categoryName.getText().toString();
                 in.putExtra("new category", cat);
