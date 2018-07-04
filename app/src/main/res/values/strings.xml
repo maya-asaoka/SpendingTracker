@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Spending Tracker</string>
 
+    <string name="most_recent">Sort By (most recent, default)</string>
+    <string name="least_recent">Sort By (least recent)</string>
+    <string name="alpha">Sort Alphabetically</string>
+    <string name="add_remove">Add/Remove Categories</string>
+
+    <string name="confirm">confirm</string>
 </resources>

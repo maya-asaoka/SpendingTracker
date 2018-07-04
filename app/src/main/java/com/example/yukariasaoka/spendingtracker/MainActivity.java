@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addExampleEntries();
         totalView.setText("Total: $" + calculateTotal());
 
-        entryListView = (ListView) findViewById(R.id.entriesList);
+        entryListView = findViewById(R.id.entriesList);
 
         eAdapter = new EntryAdapter(this, entries);
         entryListView.setAdapter(eAdapter);
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return instance;
     }
 
-    public double calculateTotal() {
+    private double calculateTotal() {
         double total = 0;
         for (Entry e : entries) {
             total = total + Double.parseDouble(e.getAmount());
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         categories.remove(c);
     }
 
-    public void sortCategories() {
+    private void sortCategories() {
         Collections.sort(categories, String.CASE_INSENSITIVE_ORDER);
     }
 
