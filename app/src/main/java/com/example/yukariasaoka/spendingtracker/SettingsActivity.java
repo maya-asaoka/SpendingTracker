@@ -11,9 +11,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     private TextView alpha;
     private TextView mostRecent;
     private TextView leastRecent;
-    private TextView byCategory;
     private TextView editCategories;
-    private TextView byMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,16 +21,12 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         alpha = findViewById(R.id.alpha);
         mostRecent = findViewById(R.id.mostRecent);
         leastRecent = findViewById(R.id.leastRecent);
-        byCategory = findViewById(R.id.byCategory);
         editCategories = findViewById(R.id.editCategories);
-        byMonth = findViewById(R.id.byMonth);
 
         alpha.setOnClickListener(this);
         mostRecent.setOnClickListener(this);
         leastRecent.setOnClickListener(this);
-        byCategory.setOnClickListener(this);
         editCategories.setOnClickListener(this);
-        byMonth.setOnClickListener(this);
     }
 
     @Override
@@ -58,21 +52,9 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
             }
 
-            case R.id.byCategory: {
-                Intent ic = new Intent(this, CategoryActivity.class);
-                startActivityForResult(ic, 123);
-                break;
-            }
-
             case R.id.editCategories: {
                 // go to category list: dialog box for add/delete
                 finish();
-                break;
-            }
-
-            case R.id.byMonth: {
-                Intent im = new Intent(this, MonthActivity.class);
-                startActivityForResult(im, 456);
                 break;
             }
 
@@ -84,15 +66,5 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (resultCode == RESULT_OK && requestCode == 123) {
-            String cat = data.getStringExtra("Category");
-            MainActivity.getInstance().viewByCategory(cat);
-            finish();
-        }
-        if (resultCode == RESULT_OK && requestCode == 456) {
-            String month = data.getStringExtra("Month");
-            MainActivity.getInstance().sortByMonth(month);
-            finish();
-        }
     }
 }

@@ -24,19 +24,9 @@
                 android:layout_height="wrap_content" android:id="@+id/leastRecent" android:textSize="24sp"
                 android:padding="15sp"/>
         <TextView
-                android:text="View By Month"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/byMonth" android:padding="15sp"
-                android:textSize="24sp"/>
-        <TextView
                 android:text="Sort Alphabetically"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/alpha" android:textSize="24sp"
-                android:padding="15sp"/>
-        <TextView
-                android:text="View By Category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/byCategory" android:textSize="24sp"
                 android:padding="15sp"/>
         <TextView
                 android:text="Add/Remove Categories"

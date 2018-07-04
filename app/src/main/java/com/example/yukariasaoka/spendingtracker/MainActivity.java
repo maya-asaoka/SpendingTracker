@@ -7,20 +7,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // show total!!
-
-    // addentry get rid of spinner
+    // comment code better
 
     // edit entries
 
     private Button addEntryButton;
     private Button settingsButton;
+    private TextView totalView;
     private ListView entryListView;
     private ArrayList<Entry> entries;
     private ListAdapter eAdapter;
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         instance = this;
 
+        totalView = findViewById(R.id.totalView);
         addEntryButton = findViewById(R.id.addEntryButton);
         settingsButton = findViewById(R.id.settingsButton);
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // for demo (see method for details)
         addExampleEntries();
+        totalView.setText("Total: $" + calculateTotal());
 
         entryListView = (ListView) findViewById(R.id.entriesList);
 
@@ -93,6 +95,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return instance;
     }
 
+    public double calculateTotal() {
+        double total = 0;
+        for (Entry e : entries) {
+            total = total + Double.parseDouble(e.getAmount());
+        }
+        return total;
+    }
 
     // manage categories
     public ArrayList<String> getCategories() {
@@ -110,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void sortCategories() {
         Collections.sort(categories, String.CASE_INSENSITIVE_ORDER);
     }
+
 
 
     // sorting methods for entries
@@ -130,13 +140,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         entryListView.setAdapter(eAdapter);
     }
 
-    public void viewByCategory(String cat) {
-        // TODO
-    }
-
-    public void sortByMonth(String month) {
-        // TODO
-    }
 
     private void addDefaultCategories() {
         categories.add("Food");
