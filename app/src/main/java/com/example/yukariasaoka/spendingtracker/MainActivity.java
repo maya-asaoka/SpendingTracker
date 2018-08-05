@@ -12,6 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 
+// Displays all expense entries and shows/calculates total amount spent
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button addEntryButton;

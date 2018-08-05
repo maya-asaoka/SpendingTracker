@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import java.util.Objects;
 
+// An expense Entry object consisting of a description, amount, date, and category
+
 public class Entry implements Parcelable, Comparable<Entry> {
 
     private String description;

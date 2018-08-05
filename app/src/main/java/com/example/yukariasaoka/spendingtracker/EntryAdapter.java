@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+// Array adapter to customize how entries are displayed in MainActivity
+
 public class EntryAdapter extends ArrayAdapter<Entry> {
 
     public EntryAdapter(Context context, ArrayList<Entry> entries) {
